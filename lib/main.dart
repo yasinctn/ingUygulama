@@ -174,7 +174,7 @@ void lightColor(){
            icon: const Icon(Icons.arrow_back_ios_new)),
 
         backgroundColor: const Color.fromRGBO(96, 114, 116,1),
-        title: const Text('Find The Gap'),
+        title: const Text('Find The Word'),
         actions: [
           
            IconButton(onPressed: (){
