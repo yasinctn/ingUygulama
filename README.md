@@ -1,3 +1,3 @@
-# ing_uygulama
+# projemizz
 
 A new Flutter project.
