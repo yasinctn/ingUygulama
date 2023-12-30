@@ -1,6 +1,6 @@
 {
-    "name": "ing_uygulama",
-    "short_name": "ing_uygulama",
+    "name": "projemizz",
+    "short_name": "projemizz",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
