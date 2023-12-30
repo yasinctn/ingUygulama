@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:ing_uygulama/Models/Arac.dart';
 import 'package:ing_uygulama/Models/araclar_listesi.dart';
@@ -11,12 +13,18 @@ class KelimeBilgisi extends StatefulWidget {
 
 // ignore: camel_case_types
 class stateKelimeBilgisi extends State<KelimeBilgisi> {
+  //final audioPlayer = AudioCache();
+  AudioPlayer audioPlayer = AudioPlayer();
+  bool isPressed = false;
+  bool isAnimating = false;
+
   double _initial = 0.1;
   // ignore: unused_element
+
   Widget _stepIndicator() {
     return (LinearProgressIndicator(
       borderRadius: BorderRadius.circular(12.0),
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.grey[350],
       valueColor: const AlwaysStoppedAnimation(Colors.green),
       minHeight: 10.0,
       value: _initial,
@@ -26,11 +34,15 @@ class stateKelimeBilgisi extends State<KelimeBilgisi> {
   List<Arac> araclistesi = AracListesi.araclistesi;
   int currentAracIndex = 0;
 
+  void playSound() {
+    audioPlayer.play(araclistesi[currentAracIndex].voice, isLocal: false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.blueGrey,
+            //backgroundColor: Colors.blueGrey,
             body: Column(
       children: [
         Row(
@@ -97,12 +109,12 @@ class stateKelimeBilgisi extends State<KelimeBilgisi> {
                   color: Colors.white.withOpacity(1.0),
                   borderRadius: BorderRadius.circular(30),
                   image: DecorationImage(
-                      image: AssetImage(araclistesi[currentAracIndex].resim)),
+                      image : AssetImage(araclistesi[currentAracIndex].resim)),
                   boxShadow: [
                     BoxShadow(
                       color: const Color.fromARGB(201, 134, 137, 125)
                           .withOpacity(0.3),
-                      spreadRadius: 1,
+                      spreadRadius: 4,
                       blurRadius: 2,
                       offset: const Offset(0, 0),
                     ),
@@ -144,7 +156,7 @@ class stateKelimeBilgisi extends State<KelimeBilgisi> {
               BoxShadow(
                 color:
                     const Color.fromARGB(201, 134, 137, 125).withOpacity(0.3),
-                spreadRadius: 1,
+                spreadRadius: 4,
                 blurRadius: 2,
                 offset: const Offset(0, 0),
               ),
@@ -169,9 +181,47 @@ class stateKelimeBilgisi extends State<KelimeBilgisi> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            FloatingActionButton(
-              onPressed: () {},
-              child: const Icon(Icons.mic),
+            InkResponse(
+              onTap: () {
+                setState(() {
+                  isPressed = !isPressed;
+                });
+              },
+              child: Ink(
+                decoration: ShapeDecoration(
+                  color: Colors.blue, // Buton rengi
+                  shape: const CircleBorder(),
+                  shadows: [
+                    BoxShadow(
+                      color: isPressed
+                          ? Colors.green
+                          : const Color.fromARGB(0, 183, 173, 95),
+                      spreadRadius: 4,
+                      blurRadius: 5,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
+                child: SizedBox(
+                  width: 54.0,
+                  height: 54.0,
+                  child: IconButton(
+                    icon: const Icon(Icons.mic),
+                    color: Colors.white,
+                    onPressed: () {
+                      playSound();
+                      setState(() {
+                        isPressed = !isPressed;
+                        Timer(const Duration(seconds: 2), () {
+                          setState(() {
+                            isPressed = false; // 3 saniye sonra gölgeyi kapat
+                          });
+                        });
+                      });
+                    },
+                  ),
+                ),
+              ),
             ),
             FloatingActionButton(
                 onPressed: () {},

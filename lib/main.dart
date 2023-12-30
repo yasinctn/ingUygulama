@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ing_uygulama/gozdengecir.dart';
 
 import 'kelime_bilgisi.dart';
 
@@ -12,7 +13,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: KelimeBilgisi(),
+      debugShowCheckedModeBanner: false,
+      home: KelimeBilgisi(),//GozdenGecir()
     );
   }
 }
