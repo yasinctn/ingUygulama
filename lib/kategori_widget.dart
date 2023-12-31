@@ -29,7 +29,7 @@ class _KategoriWidgetState extends State<KategoriWidget>{
   Widget build(BuildContext context){
     return Column(
       children: [
-       /* ElevatedButton(child: Text("Write to file"),onPressed: (){
+      /*  ElevatedButton(child: Text("Write to file"),onPressed: (){
           DosyaIslem.writeToFile();
           }
           ),
@@ -43,7 +43,7 @@ class _KategoriWidgetState extends State<KategoriWidget>{
               margin: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 10),
                     child: ElevatedButton(
                       onPressed: (){
-                       // kategoriGuncelle();
+                        kategoriGuncelle();
                       },
                       child: ListTile(
                         title: Container(

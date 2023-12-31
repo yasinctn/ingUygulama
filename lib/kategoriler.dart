@@ -46,7 +46,9 @@ static Future<void> kategoriDoldur() async {
     /*  if(kategori.progress>=0.2)
         kategori.progress -= 0.2;
     }*/
-    print(kategori.oyunlar);
+    kategori.kelimeListesi[0].ogrenildi=true;
+    print("${kategori.isim} ${kategori.ogrenilenKelime}/${kategori.toplamKelime}\n${kategori.kelimeListesi[0].turkce}\n${kategori.oyunlar}\n");
+
   }
  
 }

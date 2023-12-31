@@ -1,13 +1,23 @@
-futbol-football-true-[false,true,false,false,false]
-basketbol-basketball-false
-voleybol-volleyball-false
-tenis-tennis-true
-boks-boxing-false
-okçuluk-archery-false
-halter-weightlifting-false
-güreş-wrestling-true
-hentbol-handball-false
-cirit atma-javelin throw-false
+köpek-dog-false-[false,false,false,false,false]
+kedi-cat-false
+aslan-lion-false
+tavşan-rabbit-false
+fil-elephant-false
+timsah-alligator-false
+zebra-zebra-false
+inek-cow-false
+kaplumbağa-turtle-true
+köpek balığı-shark-false
+öğretmen-teacher-false-[false,true,false,false,false]
+mimar-architect-false
+polis memuru-police officer-false
+doktor-doctor-false
+mühendis-engineer-false
+hemşire-nurse-false
+asker-soldier-false
+aşçı-cook-false
+garson-waiter-false
+yazılımcı-programmer-false
 uçak-plane-false-[true,false,false,false,false]
 araba-car-true
 otobüs-bus-false
@@ -18,7 +28,17 @@ yelken-sail-false
 tır-truck-false
 bisiklet-bicycle-false
 motorsiklet-motorcycle-false
-elma-apple-false-[fals,-true,false,true,true]
+futbol-football-true-[false,true,false,false,false]
+basketbol-basketball-false
+voleybol-volleyball-false
+tenis-tennis-true
+boks-boxing-false
+okçuluk-archery-false
+halter-weightlifting-false
+güreş-wrestling-true
+hentbol-handball-false
+cirit atma-javelin throw-false
+elma-apple-false-[false,true,false,true,true]
 muz-banana-false
 kiraz-cherry-false
 üzüm-grape-false
@@ -38,23 +58,3 @@ fırın-oven-false
 duşluk-shower-false
 masa-table-false
 gardırop-wardrobe-true
-öğretmen-teacher-false-[false,true,false,false,false]
-mimar-architect-false
-polis memuru-police officer-false
-doktor-doctor-false
-mühendis-engineer-false
-hemşire-nurse-false
-asker-soldier-false
-aşçı-cook-false
-garson-waiter-false
-yazılımcı-programmer-false
-köpek-dog-false-[false,false,false,false,false]
-kedi-cat-false
-aslan-lion-false
-tavşan-rabbit-false
-fil-elephant-false
-timsah-alligator-false
-zebra-zebra-false
-inek-cow-false
-kaplumbağa-turtle-true
-köpek balığı-shark-false
