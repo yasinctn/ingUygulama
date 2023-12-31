@@ -1,6 +1,6 @@
 {
-    "name": "ing_uygulama",
-    "short_name": "ing_uygulama",
+    "name": "day_night_mode",
+    "short_name": "day_night_mode",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

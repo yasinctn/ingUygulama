@@ -1,4 +1,4 @@
-name: ing_uygulama
+name: day_night_mode
 description: A new Flutter project.
 publish_to: 'none'
 version: 0.1.0
@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.1.3 <4.0.0'
 
 dependencies:
+  day_night_switch: ^1.0.4
   flutter:
     sdk: flutter
 
