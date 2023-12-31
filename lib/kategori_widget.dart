@@ -1,63 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:ing_uygulama/dosyaIslem.dart';
+import 'package:ing_uygulama/kategoriler.dart';
 
-class KategoriWidget extends StatelessWidget{
-  var liste;
-  KategoriWidget(this.liste);
+class KategoriWidget extends StatefulWidget{
+@override
+State<KategoriWidget> createState() => _KategoriWidgetState();
+const KategoriWidget({super.key});
+}
+
+class _KategoriWidgetState extends State<KategoriWidget>{
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+      await Kategoriler.kategoriDoldur();
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+    void kategoriGuncelle() {
+    setState(() {});
+  }
+  
   @override
   Widget build(BuildContext context){
     return Column(
       children: [
+       /* ElevatedButton(child: Text("Write to file"),onPressed: (){
+          DosyaIslem.writeToFile();
+          }
+          ),
+          ElevatedButton(child: Text("Progress Azalt"), onPressed: (){
+            Kategoriler.progressAzalt();
+          },),*/
         Expanded(child: Center(
           child: ListView.builder(
-            itemCount: liste.length,
-            itemBuilder: (context, index) => ElevatedButton(
-              onPressed: (){},
-              child: SizedBox(
-                height: 155,
-                child: Card(
-                  margin: EdgeInsets.all(10),
-                  color: const Color.fromARGB(255, 189, 226, 243),
-                  elevation: 2,
-                  child: ListTile(
-                    title: Container(
-                      margin: EdgeInsets.all(3),
-                      padding: EdgeInsets.all(10),
-                      child: Column( 
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:[
-                         Text(liste[index].isim),
-                         Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Text("${liste[index].ogrenilenKelime}/${liste[index].toplamKelime}"),
-                                Text('Kelimeler')
-                              ],
-                            ),
-                          )),
-                         Container(
-                            margin: EdgeInsets.fromLTRB(0,8,0,8),
-                            height: 10,
-                           child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                             child: LinearProgressIndicator(
-                              value: liste[index].progress,
-                              backgroundColor: Colors.grey,
-                              valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
-                             ),
-                           ),
-                         )
-                         ]),
+            itemCount: Kategoriler.kategoriler.length,
+            itemBuilder: (context, index) => Container(
+              margin: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 10),
+                    child: ElevatedButton(
+                      onPressed: (){
+                       // kategoriGuncelle();
+                      },
+                      child: ListTile(
+                        title: Container(
+                          padding: EdgeInsets.all(5),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                        'assets/${Kategoriler.kategoriler[index].isim.toLowerCase()}.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                      SizedBox(width: 30,),
+                              Column( 
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children:[
+                                 Text(Kategoriler.kategoriler[index].isim),
+                                 Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        Text("${Kategoriler.kategoriler[index].ogrenilenKelime}/${Kategoriler.kategoriler[index].toplamKelime}"),
+                                        Text('Kelimeler')
+                                      ],
+                                    ),
+                                  )),
+                                 Container(
+                                    margin: EdgeInsets.fromLTRB(0,8,0,8),
+                                    height: 10,
+                                    width: 200,
+                                     child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                         child: LinearProgressIndicator(
+                                          value: Kategoriler.kategoriler[index].progressHesapla(),
+                                          backgroundColor: const Color.fromARGB(255, 222, 219, 219),
+                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                                         ),
+                                       ),
+                                     ),
+                                 ]),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    leading: Image.asset('assets/${liste[index].isim.toLowerCase()}.png')
                   ),
                 ),
               ),
             ),
-          ),
-        ))
       ],
     );
   }
