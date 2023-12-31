@@ -8,17 +8,24 @@ void main() {
 Color colour = Colors.white;
 Color textColor = Colors.black;
 bool light = true;
-String themeAppText = 'Day Mode';
+String themeAppText = 'Enable Dark Mode';
+Color appBarTheme =  Color.fromARGB(255, 40, 69, 84);
+IconData themeIconn = Icons.mode_night;
+Color colorofIcon = Colors.white;
 changeColor(){
   if (light == false) {
     colour = Colors.black;
     textColor = Colors.white;
-themeAppText = 'Dark Mode';
+themeAppText = 'Enable Day Mode';
+themeIconn = Icons.mode_night_sharp;
+colorofIcon = Colors.white;
   }
   else if (light == true)
   {colour = Colors.white;
   textColor = Colors.black;
-  themeAppText = 'Day Mode';
+  themeAppText = 'Enable Dark Mode';
+  themeIconn = Icons.sunny;
+  colorofIcon = Colors.black;
   }
 }
 class MainApp extends StatelessWidget {
@@ -28,7 +35,6 @@ class MainApp extends StatelessWidget {
   
   Widget build(BuildContext context) {
     return  MaterialApp(
-      
       home: AppTheme(),
     );
   }
@@ -61,7 +67,11 @@ class _AppThemeState extends State<AppTheme> {
             Row(
              
               children: [
-                
+                 Padding(
+                  padding: EdgeInsets.fromLTRB(20.0, 10.0,0,0),
+                  child: changedIcon(themeIcon: themeIconn,colorIcon: colorofIcon,),
+                  
+                ),
                 Expanded(
                   child: Padding(
                     padding:  EdgeInsets.fromLTRB(25.0, 10.0,0,0),
@@ -69,7 +79,9 @@ class _AppThemeState extends State<AppTheme> {
                     
                     style: TextStyle(color: textColor,
                     fontSize: 20.0),),
+                    
                   ),
+                  
                 ),
                 
                 Padding(
@@ -99,5 +111,16 @@ class _AppThemeState extends State<AppTheme> {
       ),
     );
 
+  }
+}
+
+class changedIcon extends StatelessWidget {
+ 
+ changedIcon({required this.themeIcon,required this.colorIcon});
+final Color colorIcon;
+final IconData themeIcon;
+  @override
+  Widget build(BuildContext context) {
+    return Icon(themeIcon,color: colorIcon,);
   }
 }
