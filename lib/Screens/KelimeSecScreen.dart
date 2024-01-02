@@ -278,7 +278,6 @@ class Fruits {
 }
 
 showAlertDialog(BuildContext context) {
-  // set up the buttons
   Widget cancelButton = TextButton(
     child: Text("Bitir"),
     onPressed: () {},
