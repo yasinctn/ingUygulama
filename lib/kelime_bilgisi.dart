@@ -55,8 +55,7 @@ class stateKelimeBilgisi extends State<KelimeBilgisi> {
                 size: 33,
               ),
             ),
-            SizedBox(
-              width: 310,
+            Expanded(
               child: _stepIndicator(),
             ),
             IconButton(
